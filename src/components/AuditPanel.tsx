@@ -24,14 +24,14 @@ export default function AuditPanel() {
       </div>
 
       <div className="two-col">
-        <div className="sketch panel alt">
+        <div className="sketch panel alt shaded-green">
           <h3 style={{ color: 'var(--green)' }}>✔ What’s working</h3>
           <ul className="doodle-list">
             {audit.whatsWorking.map((w, i) => <li key={i}>{w}</li>)}
           </ul>
         </div>
 
-        <div className="sketch panel">
+        <div className="sketch panel shaded-red">
           <h3 style={{ color: 'var(--red)' }}>✗ Where you bleed</h3>
           {audit.painPoints.map((p, i) => (
             <div key={i} className="pain">
@@ -42,7 +42,7 @@ export default function AuditPanel() {
         </div>
       </div>
 
-      <div className="sketch panel gold-panel tilt-r">
+      <div className="sketch panel shaded-gold tilt-r">
         <h3>⚡ Quick wins</h3>
         <ul className="doodle-list">
           {audit.quickWins.map((q, i) => <li key={i}>{q}</li>)}
