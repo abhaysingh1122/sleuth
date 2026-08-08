@@ -1,0 +1,49 @@
+/* ============================================================
+   Vintage layer — aged sketchbook paper, warm tones, torn edges,
+   pencil-boil mascot. Loaded last so it tunes the base theme.
+   ============================================================ */
+
+:root {
+  /* warmer, more aged paper + darker warm ink */
+  --paper:   #ECE0BF;
+  --paper-2: #E6D9B4;
+  --ink:     #251D0E;
+  --ink-soft:#5B4E33;
+  --ink-faint:#A99A72;
+}
+
+/* aged paper grain — a faint noise sheet sitting behind the app,
+   so it shows through the cream gaps between cards. */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: -2; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='0.55'/%3E%3C/svg%3E");
+  opacity: .22;
+}
+
+/* warm vignette + faint corner aging */
+body::after {
+  content: '';
+  position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  box-shadow: inset 0 0 200px rgba(74,52,20,.30);
+  background:
+    radial-gradient(circle at 0% 0%,   rgba(110,80,34,.12), transparent 22%),
+    radial-gradient(circle at 100% 0%, rgba(110,80,34,.10), transparent 20%),
+    radial-gradient(circle at 100% 100%, rgba(110,80,34,.12), transparent 24%),
+    radial-gradient(circle at 0% 100%, rgba(110,80,34,.10), transparent 20%);
+}
+
+/* torn / deckled right edge on the sidebar */
+.sidebar { border-right: none !important; position: relative; }
+.sidebar::after {
+  content: '';
+  position: absolute; top: -4px; right: -2px; bottom: -4px; width: 7px;
+  background: var(--ink);
+  filter: url(#torn);
+}
+
+/* hand-drawn "boil" wobble on the mascot's strokes */
+.stickman { filter: url(#rough); }
+
+/* a touch more warmth on panels so they read like aged card stock */
+.sketch { background: var(--paper-2); }
