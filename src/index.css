@@ -1,0 +1,126 @@
+/* ============================================================
+   SpyGlass — "Pencil Boil" hand-drawn design system
+   Looks like a kid sketched the whole interface in a notebook.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Instrument+Serif:ital@0;1&display=swap');
+
+:root {
+  /* paper + ink */
+  --paper:      #F4ECD6;   /* cream sketchbook page */
+  --paper-2:    #EFE6CD;   /* slightly deeper cream for panels */
+  --ink:        #211C15;   /* warm near-black pencil */
+  --ink-soft:   #5A5140;   /* faded pencil */
+  --ink-faint:  #A99E86;   /* ghost pencil (superseded strokes) */
+
+  /* crayon accents (used sparingly, like a kid grabbed 3 colours) */
+  --red:        #D6493B;   /* red pencil — warnings / "you" */
+  --blue:       #3E6FB0;   /* blue pencil — competitors */
+  --green:      #4E9E6A;   /* green pencil — wins */
+  --gold:       #C8A93A;   /* highlighter gold — the brand accent */
+  --highlight:  #FBE38C;   /* yellow highlighter behind active words */
+
+  --stroke: 2.5px;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  background-color: var(--paper);
+  /* faint paper grain */
+  background-image:
+    radial-gradient(rgba(33,28,21,0.035) 1px, transparent 1px);
+  background-size: 7px 7px;
+  color: var(--ink);
+  font-family: 'Gaegu', cursive;
+  font-size: 19px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- hand-drawn typography ---- */
+h1, h2, h3 { font-weight: 700; margin: 0 0 .3em; line-height: 1.05; }
+h1 { font-size: 2.6rem; }
+h2 { font-size: 1.9rem; }
+h3 { font-size: 1.35rem; }
+
+.serif {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  letter-spacing: .2px;
+}
+
+.muted { color: var(--ink-soft); }
+.tiny  { font-size: .8rem; color: var(--ink-soft); }
+
+/* highlighter marker behind text */
+.mark {
+  background: linear-gradient(120deg, var(--highlight) 0%, var(--highlight) 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 62%;
+  background-position: 0 78%;
+  padding: 0 .1em;
+}
+
+/* ============================================================
+   THE hand-drawn box — irregular border-radius = wobbly edges,
+   offset ink shadow = doodle drop-shadow. No filters, text stays crisp.
+   ============================================================ */
+.sketch {
+  background: var(--paper-2);
+  border: var(--stroke) solid var(--ink);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 4px 5px 0 rgba(33,28,21,.78);
+  position: relative;
+}
+.sketch.alt { border-radius: 15px 225px 15px 255px / 225px 15px 255px 15px; }
+.sketch.tilt-l { transform: rotate(-1deg); }
+.sketch.tilt-r { transform: rotate(.8deg); }
+
+/* hand-drawn button */
+.btn {
+  font-family: 'Gaegu', cursive;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: var(--stroke) solid var(--ink);
+  border-radius: 145px 12px 155px 14px / 14px 165px 12px 145px;
+  box-shadow: 3px 4px 0 rgba(33,28,21,.8);
+  padding: .45em 1.15em;
+  cursor: pointer;
+  transition: transform .08s ease, box-shadow .08s ease;
+}
+.btn:hover  { transform: translate(1px,1px) rotate(-.5deg); box-shadow: 2px 3px 0 rgba(33,28,21,.8); }
+.btn:active { transform: translate(3px,4px); box-shadow: 1px 1px 0 rgba(33,28,21,.8); }
+.btn.primary { background: var(--gold); }
+.btn.danger  { background: var(--red); color: #fff; }
+
+/* pencil divider */
+.rule {
+  height: 3px; border: none; margin: 1.1rem 0;
+  background: var(--ink);
+  border-radius: 40% 60% 55% 45% / 100% 100% 100% 100%;
+  opacity: .8;
+}
+
+/* little chip / tag */
+.chip {
+  display: inline-block;
+  font-size: .8rem; font-weight: 700;
+  padding: .05em .6em;
+  border: 2px solid var(--ink);
+  border-radius: 40px 8px 40px 8px / 8px 40px 8px 40px;
+  background: var(--paper);
+}
+.chip.blue  { background: #D7E4F4; }
+.chip.red   { background: #F6D8D4; }
+.chip.green { background: #D6EEDD; }
+.chip.gold  { background: var(--highlight); }
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-thumb { background: var(--ink-faint); border-radius: 10px; }
+
+a { color: var(--blue); }
