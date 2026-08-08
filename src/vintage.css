@@ -4,33 +4,45 @@
    ============================================================ */
 
 :root {
-  /* warmer, more aged paper + darker warm ink */
-  --paper:   #ECE0BF;
-  --paper-2: #E6D9B4;
-  --ink:     #251D0E;
-  --ink-soft:#5B4E33;
-  --ink-faint:#A99A72;
+  /* dirtier, more aged paper + darker warm ink */
+  --paper:   #E4D5AE;
+  --paper-2: #DED0A4;
+  --ink:     #241C0D;
+  --ink-soft:#584A2E;
+  --ink-faint:#A5966D;
 }
 
-/* aged paper grain — a faint noise sheet sitting behind the app,
-   so it shows through the cream gaps between cards. */
+/* DIRTY aged-paper grain — coarse fibre noise sitting behind the app,
+   showing through the gaps so the whole page reads like a used notebook. */
 body::before {
   content: '';
   position: fixed; inset: 0; z-index: -2; pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='0.55'/%3E%3C/svg%3E");
-  opacity: .22;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6 0.7' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.32  0 0 0 0 0.24  0 0 0 0 0.10  0 0 0 0.8 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+  opacity: .40;
+  mix-blend-mode: multiply;
 }
 
-/* warm vignette + faint corner aging */
+/* stains, foxing spots, uneven browning + vignette — the "dirt" layer */
 body::after {
   content: '';
   position: fixed; inset: 0; z-index: -1; pointer-events: none;
-  box-shadow: inset 0 0 200px rgba(74,52,20,.30);
+  box-shadow: inset 0 0 220px rgba(66,44,16,.38);
   background:
-    radial-gradient(circle at 0% 0%,   rgba(110,80,34,.12), transparent 22%),
-    radial-gradient(circle at 100% 0%, rgba(110,80,34,.10), transparent 20%),
-    radial-gradient(circle at 100% 100%, rgba(110,80,34,.12), transparent 24%),
-    radial-gradient(circle at 0% 100%, rgba(110,80,34,.10), transparent 20%);
+    /* big uneven tea-stain blotches */
+    radial-gradient(ellipse 40% 30% at 18% 22%, rgba(120,86,36,.16), transparent 60%),
+    radial-gradient(ellipse 35% 45% at 82% 68%, rgba(120,86,36,.14), transparent 60%),
+    radial-gradient(ellipse 50% 25% at 60% 12%, rgba(96,68,28,.10), transparent 60%),
+    /* a faint coffee ring */
+    radial-gradient(circle at 73% 30%, transparent 34px, rgba(101,67,26,.18) 35px, rgba(101,67,26,.18) 38px, transparent 39px),
+    /* small foxing specks */
+    radial-gradient(circle at 30% 60%, rgba(90,60,24,.30) 1.5px, transparent 2px),
+    radial-gradient(circle at 45% 40%, rgba(90,60,24,.24) 1.5px, transparent 2px),
+    radial-gradient(circle at 66% 78%, rgba(90,60,24,.26) 1.5px, transparent 2px),
+    radial-gradient(circle at 88% 44%, rgba(90,60,24,.22) 1.5px, transparent 2px),
+    radial-gradient(circle at 12% 82%, rgba(90,60,24,.28) 1.5px, transparent 2px),
+    /* corner aging */
+    radial-gradient(circle at 0% 0%,   rgba(90,62,26,.18), transparent 24%),
+    radial-gradient(circle at 100% 100%, rgba(90,62,26,.18), transparent 26%);
 }
 
 /* torn / deckled right edge on the sidebar */
