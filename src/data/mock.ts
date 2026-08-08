@@ -3,6 +3,8 @@
 
 export type Platform = 'linkedin' | 'instagram' | 'x' | 'website';
 
+import type { AvatarKind } from '../components/Avatar';
+
 export interface Competitor {
   id: string;
   name: string;
@@ -13,6 +15,7 @@ export interface Competitor {
   postsPerWeek: number;
   topHook: string;
   lastSeen: string;
+  avatar: AvatarKind;
 }
 
 export const competitors: Competitor[] = [
@@ -21,18 +24,21 @@ export const competitors: Competitor[] = [
     platforms: ['linkedin', 'instagram', 'x'],
     posts: 214, avgEngagement: 1840, postsPerWeek: 6.2,
     topHook: 'Most people use AI wrong. Here is the fix.', lastSeen: '2h ago',
+    avatar: 'pigtails',
   },
   {
     id: 'c2', name: 'Zain Kahn', handle: '@zainkahn',
     platforms: ['linkedin', 'x'],
     posts: 502, avgEngagement: 2210, postsPerWeek: 9.1,
     topHook: '10 AI tools that feel illegal to know.', lastSeen: '5h ago',
+    avatar: 'reading',
   },
   {
     id: 'c3', name: 'Nick Saraev', handle: '@nicksaraev',
     platforms: ['linkedin', 'website'],
     posts: 96, avgEngagement: 640, postsPerWeek: 3.4,
     topHook: 'I automated my agency. Here is the exact build.', lastSeen: '1d ago',
+    avatar: 'pointing',
   },
 ];
 
