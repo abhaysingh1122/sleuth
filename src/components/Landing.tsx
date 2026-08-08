@@ -8,7 +8,20 @@ const features = [
   { doodle: '⚔', title: 'Me vs Them', body: 'Splits the gap in two: structural (can’t copy) and algorithmic (steal today). The second list is your move.' },
 ];
 
+// The interface speaks differently once Sherlock is on the case.
+const copy = {
+  normal: {
+    title: <>It watches them.<br />And it watches <span className="mark">you</span>.</>,
+    sub: 'Your rivals leave clues in every post — a hook here, a rhythm there. Sleuth reads them all, remembers everything, and shows you exactly what works. No scrolling. No guessing.',
+  },
+  sherlock: {
+    title: <>Observe. Deduce.<br /><span className="mark">Overtake</span>.</>,
+    sub: 'Every rival leaves a trail — a phrase, a habit, the very hour they post. I gather the evidence across every platform and deduce precisely why they win, and how you shall. Elementary, once one troubles to look.',
+  },
+};
+
 export default function Landing({ sherlock, go }: { sherlock: boolean; go: (v: View) => void }) {
+  const c = sherlock ? copy.sherlock : copy.normal;
   return (
     <section className="landing">
       <div className="hero">
@@ -17,16 +30,12 @@ export default function Landing({ sherlock, go }: { sherlock: boolean; go: (v: V
           <span className="sherlock-tag">Sherlock.</span>
         </div>
         <div className="hero-copy">
-          <h1 className="hero-title">It watches them.<br />And it watches <span className="mark">you</span>.</h1>
-          <p className="serif hero-sub">
-            Everyone says “keep an eye on the competition.” Nobody does — because it means
-            scrolling every platform every day and guessing what works. Sleuth does it for you.
-          </p>
+          <h1 className="hero-title">{c.title}</h1>
+          <p className="serif hero-sub">{c.sub}</p>
           <div className="hero-cta">
             <button className="btn primary" onClick={() => go('dashboard')}>Start watching →</button>
             <button className="btn" onClick={() => go('audit')}>Audit me first 🪞</button>
           </div>
-          <p className="tiny muted psst">psst — tap the little guy up top three times. 🕵️</p>
         </div>
       </div>
 
@@ -45,8 +54,9 @@ export default function Landing({ sherlock, go }: { sherlock: boolean; go: (v: V
       <div className="sketch promise gold-panel">
         <h3>The one rule</h3>
         <p className="serif read">
-          Sleuth never invents a number. Every stat is computed from real scraped data —
-          if it can’t prove it, it won’t say it.
+          {sherlock
+            ? 'I never conjure a figure from thin air. Every number is drawn from real evidence — where there is no proof, I hold my tongue.'
+            : 'Sleuth never invents a number. Every stat is computed from real scraped data — if it can’t prove it, it won’t say it.'}
         </p>
       </div>
     </section>
