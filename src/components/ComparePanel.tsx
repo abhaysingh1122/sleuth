@@ -11,7 +11,7 @@ export default function ComparePanel() {
       </header>
 
       <div className="versus">
-        <div className="sketch panel structural tilt-l">
+        <div className="sketch panel structural shaded-red tilt-l">
           <span className="chip red">CAN’T COPY</span>
           <h3>Structural</h3>
           <p className="tiny muted">the stuff you’ll never buy this week.</p>
@@ -22,7 +22,7 @@ export default function ComparePanel() {
 
         <div className="vs-mark serif">vs</div>
 
-        <div className="sketch panel algorithmic tilt-r alt">
+        <div className="sketch panel algorithmic shaded-green tilt-r alt">
           <span className="chip green">STEAL TODAY</span>
           <h3>Algorithmic</h3>
           <p className="tiny muted">the stuff you can copy right now.</p>
