@@ -1,0 +1,54 @@
+/* ============================================================
+   Sherlock easter egg — the stickman transforms.
+   Base elements always shown; .sh extras fade in staggered when
+   the SVG has .is-sherlock. Smoke only animates in Sherlock mode.
+   ============================================================ */
+
+/* extras hidden by default */
+.stickman .sh { opacity: 0; transition: opacity .7s ease; }
+.stickman .hair { transition: opacity .5s ease; }
+
+/* staggered reveal: cape → cap → pipe */
+.stickman.is-sherlock .sh-cape { opacity: 1; transition-delay: .05s; }
+.stickman.is-sherlock .sh-cap  { opacity: 1; transition-delay: .55s; }
+.stickman.is-sherlock .sh-pipe { opacity: 1; transition-delay: 1.05s; }
+/* hair tucks under the cap */
+.stickman.is-sherlock .hair { opacity: 0; transition-delay: .55s; }
+
+/* rising pipe smoke */
+@keyframes smoke {
+  0%   { transform: translateY(0) scale(.6); opacity: 0; }
+  25%  { opacity: .5; }
+  100% { transform: translateY(-26px) scale(1.5); opacity: 0; }
+}
+.stickman .puff { opacity: 0; transform-box: fill-box; transform-origin: center; }
+.stickman.is-sherlock .puff { animation: smoke 2.6s ease-out infinite; }
+.stickman.is-sherlock .puff.p1 { animation-delay: 0s; }
+.stickman.is-sherlock .puff.p2 { animation-delay: .8s; }
+.stickman.is-sherlock .puff.p3 { animation-delay: 1.6s; }
+
+/* ---- whole-page Sherlock mood (replaces dark/light) ---- */
+:root.sherlock {
+  --paper:   #E9E0C8;   /* aged case-file paper */
+  --paper-2: #E3D9BE;
+  --ink:     #1B160F;
+}
+:root.sherlock body {
+  /* faint vignette like an old photograph */
+  box-shadow: inset 0 0 220px rgba(27,22,15,.35);
+}
+
+/* the "Sherlock." label that sketches in */
+.sherlock-tag {
+  font-family: 'Instrument Serif', serif; font-style: italic;
+  font-size: 1.05rem; color: var(--ink);
+  overflow: hidden; white-space: nowrap;
+  max-width: 0; opacity: 0;
+  transition: max-width 1s ease .9s, opacity .4s ease .9s;
+  border-bottom: 2px solid var(--ink);
+  border-radius: 40% 60% 55% 45% / 100% 100% 100% 100%;
+}
+:root.sherlock .sherlock-tag { max-width: 160px; opacity: 1; }
+
+/* toggle hint under the logo */
+.logo-hint { cursor: pointer; user-select: none; }
