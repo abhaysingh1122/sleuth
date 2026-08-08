@@ -1,22 +1,32 @@
 import Stickman from './Stickman';
 
-export type View = 'dashboard' | 'audit' | 'compare' | 'ask';
+export type View = 'home' | 'dashboard' | 'audit' | 'compare' | 'ask';
 
 const items: { id: View; label: string; doodle: string }[] = [
+  { id: 'home',      label: 'Home',        doodle: '🏠' },
   { id: 'dashboard', label: 'The Watchlist', doodle: '👁' },
-  { id: 'audit',     label: 'Audit Me',      doodle: '🪞' },
-  { id: 'compare',   label: 'Me vs Them',    doodle: '⚔' },
-  { id: 'ask',       label: 'Just Ask',      doodle: '💬' },
+  { id: 'audit',     label: 'Audit Me',    doodle: '🪞' },
+  { id: 'compare',   label: 'Me vs Them',  doodle: '⚔' },
+  { id: 'ask',       label: 'Just Ask',    doodle: '💬' },
 ];
 
-export default function Sidebar({ view, setView }: { view: View; setView: (v: View) => void }) {
+interface Props {
+  view: View;
+  setView: (v: View) => void;
+  sherlock: boolean;
+  onLogoClick: () => void;
+}
+
+export default function Sidebar({ view, setView, sherlock, onLogoClick }: Props) {
   return (
     <aside className="sidebar">
-      <div className="brand">
-        <Stickman size={78} />
+      {/* logo — click 3× for Sherlock mode */}
+      <div className="brand logo-hint" onClick={onLogoClick} title="click me three times…">
+        <Stickman size={82} sherlock={sherlock} />
         <div>
-          <h1 className="brand-name">SpyGlass</h1>
-          <p className="tiny serif">it watches them. and it watches you.</p>
+          <h1 className="brand-name">Sleuth</h1>
+          <p className="tiny serif">the case never closes.</p>
+          <span className="sherlock-tag">Sherlock.</span>
         </div>
       </div>
 
