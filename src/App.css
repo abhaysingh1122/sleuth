@@ -180,3 +180,28 @@
     repeating-linear-gradient(128deg, rgba(200,169,58,.22) 0 5px, rgba(200,169,58,.32) 5px 10px),
     #FBEBA6;
 }
+
+/* ============ image-based mascot (uses real PNG art) ============ */
+.mascot { position: relative; display: inline-block; }
+.m-img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: contain; object-position: bottom center;
+  transition: opacity .7s ease;
+}
+.m-img.hide { opacity: 0; }
+
+/* animated pipe smoke, layered over the drawing (top area) */
+.m-smoke { position: absolute; top: 6%; left: 62%; width: 20px; height: 40px; pointer-events: none; }
+.m-smoke i {
+  position: absolute; bottom: 0; left: 0;
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--ink-soft); opacity: 0;
+  animation: puff 2.6s ease-out infinite;
+}
+.m-smoke i:nth-child(2) { animation-delay: .8s; left: 4px; }
+.m-smoke i:nth-child(3) { animation-delay: 1.6s; left: -3px; }
+@keyframes puff {
+  0%   { transform: translateY(0) scale(.5); opacity: 0; }
+  25%  { opacity: .45; }
+  100% { transform: translateY(-30px) scale(1.6); opacity: 0; }
+}
