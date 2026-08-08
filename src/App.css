@@ -132,3 +132,51 @@
   .feature-grid { grid-template-columns: 1fr; }
   .hero-title { font-size: 2.4rem; }
 }
+
+/* ============ v2 polish: match the hand-drawn mockups ============ */
+
+/* -- sidebar: pull nav up close to the logo -- */
+.sidebar .rule { margin: .55rem 0; }
+.brand { align-items: flex-start; gap: 4px; margin-bottom: 2px; }
+.nav { margin-top: 2px; }
+.sidebar-foot { margin-top: auto; }
+
+/* scattered easter-egg doodles */
+.doodles { position: relative; margin: 26px 0 0 8px; opacity: .8; }
+.doodle-eyes { transform: rotate(-6deg); }
+.doodle-glass { display: block; margin: 14px 0 0 44px; transform: rotate(8deg); }
+
+/* -- pushpins on cards -- */
+.card { padding-top: 26px; }
+.pushpin { position: absolute; top: -9px; z-index: 3; }
+.pushpin.pin-l { left: 16px; transform: rotate(-14deg); }
+.pushpin.pin-r { right: 16px; transform: rotate(12deg); }
+
+/* -- competitor card: avatar + id row -- */
+.card-top { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 10px; }
+.card-id { flex: 1; min-width: 0; }
+.avatar {
+  flex-shrink: 0; width: 62px; height: 62px;
+  display: grid; place-items: center;
+  background: var(--paper);
+  border-radius: 18px 6px 18px 6px / 6px 18px 6px 18px;
+  box-shadow: 2px 3px 0 rgba(33,28,21,.7);
+}
+.handle { margin: 0 0 6px; }
+
+/* -- crayon-shaded panels (colored-pencil texture) -- */
+.shaded-green {
+  background:
+    repeating-linear-gradient(128deg, rgba(78,158,106,.20) 0 5px, rgba(78,158,106,.30) 5px 10px),
+    #DCEEE0;
+}
+.shaded-red {
+  background:
+    repeating-linear-gradient(128deg, rgba(214,73,59,.16) 0 5px, rgba(214,73,59,.26) 5px 10px),
+    #F5DDD8;
+}
+.shaded-gold {
+  background:
+    repeating-linear-gradient(128deg, rgba(200,169,58,.22) 0 5px, rgba(200,169,58,.32) 5px 10px),
+    #FBEBA6;
+}
