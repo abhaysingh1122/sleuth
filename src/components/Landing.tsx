@@ -1,4 +1,4 @@
-import Stickman from './Stickman';
+import Mascot from './Mascot';
 import type { View } from './Sidebar';
 
 const features = [
@@ -26,7 +26,7 @@ export default function Landing({ sherlock, go }: { sherlock: boolean; go: (v: V
     <section className="landing">
       <div className="hero">
         <div className="hero-figure">
-          <Stickman size={190} sherlock={sherlock} />
+          <Mascot size={190} sherlock={sherlock} />
           <span className="sherlock-tag">Sherlock.</span>
         </div>
         <div className="hero-copy">
