@@ -20,9 +20,9 @@ interface Props {
 export default function Sidebar({ view, setView, sherlock, onLogoClick }: Props) {
   return (
     <aside className="sidebar">
-      {/* logo — click 3× for Sherlock mode */}
-      <div className="brand logo-hint" onClick={onLogoClick} title="click me three times…">
-        <Stickman size={82} sherlock={sherlock} />
+      {/* logo — click 3× for Sherlock mode (no hint; people find it) */}
+      <div className="brand logo-hint" onClick={onLogoClick} title="hmm…">
+        <Stickman size={70} sherlock={sherlock} />
         <div>
           <h1 className="brand-name">Sleuth</h1>
           <p className="tiny serif">the case never closes.</p>
@@ -44,6 +44,22 @@ export default function Sidebar({ view, setView, sherlock, onLogoClick }: Props)
           </button>
         ))}
       </nav>
+
+      {/* scattered easter-egg doodles in the empty space */}
+      <div className="doodles" aria-hidden="true">
+        <svg className="doodle-eyes" viewBox="0 0 60 30" width="54"
+          fill="none" stroke="var(--ink)" strokeWidth={2} strokeLinecap="round">
+          <ellipse cx="16" cy="15" rx="12" ry="9" />
+          <ellipse cx="44" cy="15" rx="12" ry="9" />
+          <circle cx="19" cy="16" r="3.2" fill="var(--ink)" stroke="none" />
+          <circle cx="47" cy="16" r="3.2" fill="var(--ink)" stroke="none" />
+        </svg>
+        <svg className="doodle-glass" viewBox="0 0 60 60" width="66"
+          fill="none" stroke="var(--gold)" strokeWidth={3} strokeLinecap="round">
+          <circle cx="24" cy="24" r="16" />
+          <path d="M36 36 L52 52" />
+        </svg>
+      </div>
 
       <div className="sidebar-foot tiny muted">
         <p>every number here is scraped &amp; real.</p>
