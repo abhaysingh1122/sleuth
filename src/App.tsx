@@ -5,9 +5,11 @@ import Dashboard from './components/Dashboard';
 import AuditPanel from './components/AuditPanel';
 import ComparePanel from './components/ComparePanel';
 import AskPanel from './components/AskPanel';
+import SketchFilters from './components/SketchFilters';
 import { playSherlockCue } from './lib/sherlockCue';
 import './App.css';
 import './sherlock.css';
+import './vintage.css';
 
 export default function App() {
   const [view, setView] = useState<View>('home');
@@ -37,6 +39,7 @@ export default function App() {
 
   return (
     <div className="layout">
+      <SketchFilters />
       <Sidebar view={view} setView={setView} sherlock={sherlock} onLogoClick={onLogoClick} />
       <main className="stage">
         {view === 'home' && <Landing sherlock={sherlock} go={setView} />}
