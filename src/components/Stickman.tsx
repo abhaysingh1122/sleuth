@@ -1,7 +1,7 @@
-// The Sleuth mascot — a stickman that transforms into Sherlock on the easter egg.
+// The Sleuth mascot — a clean stickman that transforms into Sherlock.
 // Base: round head + curl-loop hair, single-stroke limbs, NO hands, gold magnifier.
-// Sherlock extras (cape, deerstalker cap, pipe, smoke) start hidden and fade in,
-// staggered, when `sherlock` is true. Smoke animates only in Sherlock mode.
+// Sherlock extras (deerstalker cap, Inverness cape, pipe + smoke) start hidden and
+// fade in staggered when `sherlock` is true. Kept CLEAN — clear silhouette, minimal noise.
 
 interface Props { size?: number; sherlock?: boolean; className?: string; }
 
@@ -9,68 +9,66 @@ export default function Stickman({ size = 120, sherlock = false, className = '' 
   return (
     <svg
       className={`stickman ${sherlock ? 'is-sherlock' : ''} ${className}`}
-      width={size} height={size * 1.4} viewBox="0 0 130 182"
+      width={size} height={size * 1.42} viewBox="0 0 130 184"
       fill="none" stroke="var(--ink)" strokeWidth={3}
       strokeLinecap="round" strokeLinejoin="round"
     >
-      {/* ---- INVERNESS CAPE (fades in first) ---- */}
+      {/* ---- INVERNESS CAPE (fades in first) — clean shoulder cape + draping body cape ---- */}
       <g className="sh sh-cape">
-        <path d="M40 60 L30 116 L74 116 L64 60 Z" fill="var(--ink)" opacity="0.14" stroke="var(--ink)" strokeWidth="2.5" />
-        {/* shoulder cape layer */}
-        <path d="M38 60 Q52 74 66 60 L70 84 Q52 94 34 84 Z" fill="var(--ink)" opacity="0.10" stroke="var(--ink)" strokeWidth="2.5" />
-        {/* pencil-shading hatching */}
-        <path d="M38 74 L44 108 M46 72 L50 110 M56 72 L58 110 M64 74 L68 108" stroke="var(--ink)" strokeWidth="1" opacity="0.35" />
+        {/* body cape, draping */}
+        <path d="M44 74 L33 118 Q52 126 71 118 L60 74 Z"
+              fill="var(--ink)" opacity="0.12" stroke="var(--ink)" strokeWidth="2.6" />
+        {/* shoulder cape — rounded, over the shoulders */}
+        <path d="M38 58 Q52 52 66 58 Q70 76 52 80 Q34 76 38 58 Z"
+              fill="var(--ink)" opacity="0.16" stroke="var(--ink)" strokeWidth="2.6" />
+        {/* a couple of soft drape folds (NOT heavy hatching) */}
+        <path d="M47 82 L44 116 M57 82 L60 116" stroke="var(--ink)" strokeWidth="1.4" opacity="0.4" />
       </g>
 
-      {/* ---- BASE STICKMAN (always visible) ---- */}
-      {/* head */}
-      <circle cx="52" cy="32" r="20" fill="var(--paper-2)" />
-      {/* curl-loop hair (hidden under cap in sherlock via CSS) */}
+      {/* ---- BASE STICKMAN ---- */}
+      <circle cx="52" cy="34" r="20" fill="var(--paper-2)" />
       <g className="hair">
-        <path d="M36 20 q4 -12 16 -12 q12 0 16 12" />
-        <path d="M68 18 q6 -3 5 4" />
+        <path d="M36 22 q4 -12 16 -12 q12 0 16 12" />
+        <path d="M68 20 q6 -3 5 4" />
       </g>
-      {/* eyes */}
-      <circle cx="47" cy="32" r="1.7" fill="var(--ink)" stroke="none" />
-      <circle cx="57" cy="32" r="1.7" fill="var(--ink)" stroke="none" />
-      {/* body */}
-      <path d="M52 52 L52 104" />
-      {/* legs */}
-      <path d="M52 104 L40 158" />
-      <path d="M52 104 L66 158" />
-      {/* left arm down */}
-      <path d="M52 64 L34 92" />
-      {/* right arm raised to the magnifier */}
-      <path d="M52 64 L84 48" />
-      {/* magnifying glass (gold) */}
-      <circle cx="99" cy="38" r="15" stroke="var(--gold)" strokeWidth="3.5" />
-      <path d="M88 49 L84 48" stroke="var(--gold)" strokeWidth="3.5" />
-      <path d="M93 32 q6 -2 9 4" stroke="var(--gold)" strokeWidth="2" opacity="0.7" />
+      <circle cx="47" cy="34" r="1.8" fill="var(--ink)" stroke="none" />
+      <circle cx="57" cy="34" r="1.8" fill="var(--ink)" stroke="none" />
+      {/* smile — subtle */}
+      <path d="M47 42 q5 4 10 0" strokeWidth="2.2" />
+      <path d="M52 54 L52 106" />
+      <path d="M52 106 L40 160" />
+      <path d="M52 106 L66 160" />
+      <path d="M52 66 L34 94" />
+      <path d="M52 66 L86 50" />
+      {/* magnifier (gold) */}
+      <circle cx="101" cy="40" r="15" stroke="var(--gold)" strokeWidth="3.6" />
+      <path d="M90 51 L86 50" stroke="var(--gold)" strokeWidth="3.6" />
+      <path d="M95 34 q6 -2 9 4" stroke="var(--gold)" strokeWidth="2" opacity="0.7" />
 
-      {/* ---- DEERSTALKER CAP (fades in) ---- */}
+      {/* ---- DEERSTALKER CAP (fades in) — dome crown + fore/aft brim + ear flaps + button ---- */}
       <g className="sh sh-cap">
-        {/* crown dome */}
-        <path d="M33 26 Q52 2 71 26" fill="var(--ink)" opacity="0.16" stroke="var(--ink)" strokeWidth="2.6" />
-        {/* front + back brim */}
-        <path d="M30 26 Q52 34 74 26" fill="none" stroke="var(--ink)" strokeWidth="2.6" />
-        {/* ear flaps */}
-        <path d="M33 24 q-6 4 -3 12" stroke="var(--ink)" strokeWidth="2.4" />
-        <path d="M71 24 q6 4 3 12" stroke="var(--ink)" strokeWidth="2.4" />
+        {/* crown dome sitting on the head */}
+        <path d="M31 30 Q31 8 52 8 Q73 8 73 30 Z"
+              fill="var(--ink)" opacity="0.15" stroke="var(--ink)" strokeWidth="2.7" />
+        {/* fore-and-aft brim across the forehead */}
+        <path d="M27 30 Q52 39 77 30" fill="none" stroke="var(--ink)" strokeWidth="2.7" />
+        {/* ear flaps, tied up */}
+        <path d="M31 22 q-8 1 -6 11 q4 2 7 -2" fill="var(--ink)" opacity="0.12" stroke="var(--ink)" strokeWidth="2.3" />
+        <path d="M73 22 q8 1 6 11 q-4 2 -7 -2" fill="var(--ink)" opacity="0.12" stroke="var(--ink)" strokeWidth="2.3" />
         {/* top button */}
-        <circle cx="52" cy="7" r="2.4" fill="var(--ink)" stroke="none" />
-        {/* cap hatching */}
-        <path d="M42 12 L40 24 M52 8 L52 24 M62 12 L64 24" stroke="var(--ink)" strokeWidth="1" opacity="0.3" />
+        <circle cx="52" cy="9" r="2.6" fill="var(--ink)" stroke="none" />
       </g>
 
       {/* ---- PIPE + SMOKE (fades in last) ---- */}
       <g className="sh sh-pipe">
-        {/* pipe stem from mouth + bowl */}
-        <path d="M60 40 Q74 44 76 52 L84 52" stroke="var(--ink)" strokeWidth="2.6" fill="none" />
-        <path d="M84 52 L84 60 Q90 60 90 52 Z" fill="var(--ink)" opacity="0.4" stroke="var(--ink)" strokeWidth="2.2" />
-        {/* smoke puffs — animated only in sherlock mode */}
-        <circle className="puff p1" cx="87" cy="46" r="3" fill="var(--ink-soft)" stroke="none" />
-        <circle className="puff p2" cx="90" cy="40" r="4" fill="var(--ink-soft)" stroke="none" />
-        <circle className="puff p3" cx="86" cy="34" r="5" fill="var(--ink-soft)" stroke="none" />
+        {/* curved stem from mouth to bowl */}
+        <path d="M61 44 Q77 46 79 55" stroke="var(--ink)" strokeWidth="2.6" fill="none" />
+        {/* bowl */}
+        <path d="M75 55 L75 64 Q84 64 84 55 Z" fill="var(--ink)" opacity="0.42" stroke="var(--ink)" strokeWidth="2.3" />
+        {/* rising smoke puffs (animated in sherlock mode) */}
+        <circle className="puff p1" cx="79" cy="49" r="2.6" fill="var(--ink-soft)" stroke="none" />
+        <circle className="puff p2" cx="83" cy="43" r="3.4" fill="var(--ink-soft)" stroke="none" />
+        <circle className="puff p3" cx="79" cy="37" r="4.2" fill="var(--ink-soft)" stroke="none" />
       </g>
     </svg>
   );
