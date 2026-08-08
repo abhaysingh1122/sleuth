@@ -54,8 +54,5 @@ body::after {
   filter: url(#torn);
 }
 
-/* hand-drawn "boil" wobble on the mascot's strokes */
-.stickman { filter: url(#rough); }
-
 /* a touch more warmth on panels so they read like aged card stock */
 .sketch { background: var(--paper-2); }
