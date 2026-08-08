@@ -1,4 +1,4 @@
-import Stickman from './Stickman';
+import Mascot from './Mascot';
 
 export type View = 'home' | 'dashboard' | 'audit' | 'compare' | 'ask';
 
@@ -22,7 +22,7 @@ export default function Sidebar({ view, setView, sherlock, onLogoClick }: Props)
     <aside className="sidebar">
       {/* logo — click 3× for Sherlock mode (no hint; people find it) */}
       <div className="brand logo-hint" onClick={onLogoClick} title="hmm…">
-        <Stickman size={70} sherlock={sherlock} />
+        <Mascot size={70} sherlock={sherlock} />
         <div>
           <h1 className="brand-name">Sleuth</h1>
           <p className="tiny serif">the case never closes.</p>
